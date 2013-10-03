@@ -1,3 +1,4 @@
+// Copyright 2013, Benjamin Coudrin, LIRMM, CNRS
 // Copyright 2011, 2012, Florent Lamiraux, Guido Manfredi, Thomas
 // Moulard, JRL, CNRS/AIST.
 //
@@ -111,6 +112,9 @@ namespace jrl
 	CjrlHumanoidDynamicRobot*
 	parseStream (const std::string& robotDescription);
 
+    /// \brief Maps link name between parser internal specifications and actual robot names
+    void specifyREPName(const std::string &link, const std::string &repName);
+
       protected:
 	/// \brief Find special joints using REP 120.
 	///
@@ -187,6 +191,9 @@ namespace jrl
 	std::string rightFootJointName_;
 	std::string gazeJointName_;
 	/// \}
+
+    std::map<std::string, std::string> linkREPNames_;
+    void initREPNames();
 
       }; // class Parser
     } // end of namespace urdf.
